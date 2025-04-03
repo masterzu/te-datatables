@@ -122,25 +122,6 @@
 			<legend>Trier</legend>
 			<select id="invType" style="max-width: 300px">
 				<option value="" selected="" disabled="">Choisir quels éléments à afficher</option>
-				<option value="">Tout afficher</option>
-				<option value="EMV">Locomotives à vapeur</option>
-				<option value="EMD">Locomotives thermique</option>
-				<option value="EME">Locomotives électrique</option>
-				<option value="X">Éléments automoteurs thermiques ou bimodes</option>
-				<option value="Z">Éléments automoteurs éléctriques (dont TGV)</option>
-				<option value="XF">Éléments automoteurs thermiques de fret ou messagerie</option>
-				<option value="ZF">Éléments automoteurs éléctriques de fret ou messagerie</option>
-				<option value="ZI">Éléments automoteurs éléctriques infra</option>
-				<option value="TGV">Trains à grande vitesse</option>
-				<option value="V">Voitures voyageurs</option>
-				<option value="VI">Voitures infra</option>
-				<option value="RR">Rames blocs voyageurs</option>
-				<option value="R">Remorques d'éléments automoteurs</option>
-				<option value="F">Fourgons</option>
-				<option value="FG">Fourgons générateurs</option>
-				<option value="DD">Fourgons porte-autos</option>
-				<option value="W">Wagons</option>
-				<option value="RF">Rames blocs fret</option>
 			</select>
 			<select id="useType" style="max-width: 300px">
 				<option value="" selected="" disabled="">Choisir quelles utilisations à afficher</option>
@@ -305,19 +286,13 @@
 						this.api()
 							.columns(0)
 							.every(function () {
-								let column = this;
+								var column = this;
 
 								// Create select element
-								let select = document.createElement('select');
-								select.add(new Option('Selection par type', ''));
-								column.footer().replaceChildren(select);
+								// let select = document.createElement('select');
+								var select = document.getElementById('invType');
 
-								// Apply listener for user change in value
-								select.addEventListener('change', function () {
-									column
-										.search(select.value)
-										.draw();
-								});
+								select.add(new Option('Tous', ''));
 
 								// Add list of options
 								matos.forEach(function (m) {
@@ -329,6 +304,14 @@
 										})
 									}
 								})
+
+								// Apply listener for user change in value
+								select.addEventListener('change', function () {
+									column
+										.search(select.value)
+										.draw();
+								});
+
 							});
 						// ajoute un selecteur par colonne automatique
 						// il faut ajouter un tfoot dans le HTML
