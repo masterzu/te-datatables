@@ -1,0 +1,526 @@
+<html><head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="style/style.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+		<title>Trafic - Train Empire</title>
+		<link rel="icon" href="style/favicon.png" type="image/x-icon">
+		<style type="text/css">
+			.dataTables_length, .dataTables_filter {
+				margin-bottom: 20px!important;
+			}
+
+			table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
+				background : none;
+			}
+
+			thead td {
+				padding: 10px 5px!important;
+				text-align: center;
+				text-decoration: underline;
+				color: #1e88e5;
+				background-color : rgba(30, 136, 229, .25)!important;
+				border-bottom: 1px solid #1e88e5!important;
+			}
+
+			thead td:hover, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
+				background-color : rgba(30, 136, 229, .3)!important;
+				font-weight: bold;
+			}
+
+			tbody td {
+				padding: 5px!important;
+				text-align: center;
+			}
+
+			tbody tr {
+				padding: 5px!important;
+				text-align: center;
+			}
+
+			.sorting_disabled {
+				text-decoration: none;
+			}
+
+			.sorting_disabled:hover {
+				text-decoration: none;
+				background-color : rgba(30, 136, 229, .25)!important;
+			}
+
+			.odd {
+				background-color: #f6f6f6!important;
+			}
+
+			.odd:hover, .even:hover {
+				background-color: #e9e9e9!important;
+			}
+
+			#import-box {
+				height: calc(95% - 30px);
+				padding: 5px 5px 25px 5px;
+				border: 1px solid rgba(0, 0, 0, .2);
+				overflow-y: scroll;
+				-moz-box-shadow: inset 0 -10px 10px -10px rgba(0, 0, 0, .75);
+				-webkit-box-shadow: inset 0 -10px 10px -10px rgba(0, 0, 0, .75);
+				box-shadow: inset 0 -10px 10px -10px rgba(0, 0, 0, .75);
+			}
+		</style>
+	</head>
+	<body style="margin: 0; padding: 0;">
+					<div class="haut">
+			<table class="banniere">
+				<tbody><tr>
+					<td class="logo">
+						<a href="qg.php"><img src="images/logo.png" alt="Trains Empire - Logo"></a>
+					</td>
+					<td class="center" style="text-align-last: left;">
+					<h1>Société Unique de Déménagement Rail – pat, compte créé le 30/03/2025 et basé à Montpellier St Roch</h1>					</td>
+					<td class="logo_co">
+					<img src="../fr/logo/16826.png" alt="Logo" -="" société="" unique="" de="" déménagement="" rail="">					</td>
+				</tr>
+			</tbody></table>
+			<div id="menu">
+				<ul>
+					<li style="background-color: rgb(58, 150, 232);"><a href="#">Général</a>
+						<ul>
+							<li style="background-color: rgb(58, 150, 232);"><a href="qg.php">QG</a></li>
+														<li style="background-color: rgb(58, 150, 232);"><a href="moi.php">Mon compte</a></li>
+														<li style="background-color: rgb(58, 150, 232);"><a href="finances.php">Finances</a></li>
+							<!-- <li><a href="palmares.php">Palmar&egrave;s</a></li>-->
+							<li style="background-color: rgb(58, 150, 232);"><a href="fame.php">Hall of Fame</a></li>
+							<li style="background-color: rgb(58, 150, 232);"><a href="filiale.php">Filiales</a></li>
+														<li style="background-color: rgb(58, 150, 232);"><a href="https://discord.gg/eGcXNhW" target="blank">Discord</a></li>
+							<!-- <li><a href="https://balaric.fr/te-forum/" target="blank">Forum</a></li> -->
+							<li style="background-color: rgb(58, 150, 232);"><a href="disconnect.php">Déconnexion</a></li>
+						</ul>
+					</li>
+					<li style="background-color: rgb(58, 150, 232);"><a href="#">Employés</a>
+						<ul>
+							<li style="background-color: rgb(58, 150, 232);"><a href="effectif.php">Effectifs</a></li>
+							<li style="background-color: rgb(58, 150, 232);"><a href="recrutCond.php">Recruter conducteurs</a></li>
+							<li style="background-color: rgb(58, 150, 232);"><a href="recrutCont.php">Recruter controleurs</a></li>
+							<li style="background-color: rgb(58, 150, 232);"><a href="recrutVend.php">Recruter vendeurs</a></li>
+						</ul>
+					</li>
+					<li style="background-color: rgb(58, 150, 232);"><a href="#">Matériel</a>
+						<ul>
+							<li style="background-color: rgb(58, 150, 232);"><a href="inventaire.php">Inventaire</a></li>
+							<li style="background-color: rgb(58, 150, 232);"><a href="compo.php">Rames</a></li>
+							<li style="background-color: rgb(58, 150, 232);"><a href="directOffer.php">Ventes directes</a></li>
+							<li style="background-color: rgb(58, 150, 232);"><a href="encheres.php">Enchères</a></li>
+							<li style="background-color: rgb(58, 150, 232);"><a href="concessList.php">Concessions</a></li>
+														<li style="background-color: rgb(58, 150, 232);"><a href="suggestions.php">Suggestions</a></li>
+														<li style="background-color: rgb(58, 150, 232);"><a href="modifs.php">Modifications</a></li>
+							<li style="background-color: rgb(58, 150, 232);"><a href="matos.php" target="blank">Liste des engins du jeu</a></li>
+						</ul>
+					</li>
+					<li style="background-color: rgb(58, 150, 232);"><a href="#">Trafic</a>
+						<ul>
+							<li style="background-color: rgb(58, 150, 232);"><a href="trafic.php">Horaires</a>
+							</li><li style="background-color: rgb(58, 150, 232);"><a href="achem.php">Acheminements</a>
+														</li><li style="background-color: rgb(58, 150, 232);"><a href="record.php">Records de vitesse</a>
+														</li><li style="background-color: rgb(58, 150, 232);"><a href="lineList.php">Liste des lignes du jeu</a></li>
+						</ul>
+					</li>
+					<li style="background-color: rgb(58, 150, 232);"><a href="alliList.php">Alliance</a></li>					<li style="background-color: rgb(58, 150, 232);"><a href="#">Marketing</a>
+						<ul>
+							<li style="background-color: rgb(58, 150, 232);"><a href="identCo.php">Identité de la compagnie</a></li>
+							<li style="background-color: rgb(58, 150, 232);"><a href="commerce.php">Offres commerciales</a></li>
+						</ul>
+					</li>
+									</ul>
+			</div>
+			<table class="titre">
+				<tbody><tr>
+					<td>
+					<h2>Trafic - Société Unique de Déménagement Rail</h2>
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+		<div class="marge">
+		</div>
+				<div class="modal" id="modal-employee">
+			<div class="modal-content">
+								<button class="dissmiss-modal">Retour au jeu</button>
+			</div>
+		</div>
+						<br>
+		<fieldset class="fieldTraf">
+			<legend>Trains</legend>
+			<a href="creatrain.php"><input type="submit" value="Créer nouvel horaire" style="max-width: 300px"></a>
+						<!--<button id="open-import-modal" class="submit" style="max-width: 300px; cursor: pointer">Import / Export</button>
+			<div id="import-modal" style="display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 3000; background-color: rgba(0, 0, 0, .5);">
+				<div style="position: relative; width: 50%; height: 75%; margin: 100px auto; padding: 15px; background-color: #fff;">
+					<div id="import-box">
+						<h1>Import / Export</h1>
+						
+						<hr/>
+						<h2>Exporter mes horaires</h2>
+
+						<br/><a href="exportTrafic.php"><button class="submit" style="max-width: 300px">Exporter mes trajets</button></a> - <a href="exportTrafic.php?model=1"><button class="submit" style="max-width: 300px">Exporter le modèle type</button></a>
+
+						<hr/>
+						<h2>Importer mes horaires</h2>
+
+						<div class="warning">Le nombre de trajets importables est limité à 500</div>
+
+						<p>Vos horaires à importer doivent être dans un fichier *.csv séparé par des point-virgules ou virgules, sans aucun accent et avec un contenu organisé comme le modèle-type (cf. ci-dessus). Les trajets impossibles ou mal formatés seront ignorés. Pour la colonne "commentaire ligne", reprenez exactement le commentaire sur la <a href="lineList.php" target="_blank">liste des lignes</a> (sauf s'il s'agit de "-" qui est facultatif).</p>
+
+						<h3>Formatage attendu des jours de circulation</h3>
+						<ul>
+							<li><strong>Lundi = </strong>:lu</li>
+							<li><strong>Mardi = </strong>:ma</li>
+							<li><strong>Mercredi = </strong>:me</li>
+							<li><strong>Jeudi = </strong>:je</li>
+							<li><strong>Vendredi = </strong>:ve</li>
+							<li><strong>Samedi = </strong>:sa</li>
+							<li><strong>Dimanche = </strong>:di</li>
+							<li><em>Laisser vide pour tous les jours</em></li>
+						</ul>
+
+						<h3>Filiales</h3>
+						<p>Utilisez le nom de la filiale <strong>sans accents.</strong></p>
+
+						<h3>Rame</h3>
+						<p>Utilisez l'identifiant de la rame trouvable entre parenthèses sur la <a href="compo.php" target="_blank">liste des rames</a></p>
+
+						<h3>Tarifs</h3>
+						<p>Ne pas indiquer le symbole monétaire. Laisser vide pour mettre un tarif automatique.</p>
+
+						<h3>Gares</h3>
+						<p>Utilisez le nom de la gare <strong>sans accents.</strong></p>
+
+						<h3>VV & EAS</h3>
+						<p>Mettez 0 (inactif) ou 1 (actif).</p>
+
+						<form action="importTraffic.php" method="post" enctype="multipart/form-data">
+							<input type="file" name="csv" style="width: 50%; max-width: 500px" />
+							<input type="submit" value="Importer mes trajets" name="submit" style="width: 50%; max-width: 500px" />
+						</form>
+					</div>
+
+					<button class="submit supprime" id="exit-import-modal" style="position: absolute; bottom: 15px; right: 15px; max-width: 200px; cursor: pointer;">Retour</button>
+				</div>
+			</div>-->
+			<button id="open-import-modal" class="submit" style="max-width: 300px; cursor: pointer">Export</button>
+			<div id="import-modal" style="display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 3000; background-color: rgba(0, 0, 0, .5);">
+				<div style="position: relative; width: 50%; height: 15%; margin: 100px auto; padding: 15px; background-color: #fff;">
+					<div id="import-box">
+						<h1>Export</h1>
+						
+						<hr>
+						<h2>Exporter mes horaires</h2>
+
+						<br><a href="exportTrafic.php"><button class="submit" style="max-width: 300px">Exporter mes trajets</button></a>
+					</div>
+
+					<button class="submit supprime" id="exit-import-modal" style="position: absolute; bottom: 15px; right: 15px; max-width: 200px; cursor: pointer;">Retour</button>
+				</div>
+			</div>
+			<p><a href="rapport.php">Rapport des circulations</a></p>
+			<div id="traffic_wrapper" class="dataTables_wrapper no-footer"><div class="dataTables_length" id="traffic_length"><label>Afficher <select name="traffic_length" aria-controls="traffic" class=""><option value="10">10</option><option value="20">20</option><option value="50">50</option><option value="100">100</option><option value="200">200</option><option value="500">500</option><option value="1000">1,000</option><option value="-1">Tout</option></select> éléments</label></div><div id="traffic_filter" class="dataTables_filter"><label>Rechercher&nbsp;:<input type="search" class="" placeholder="" aria-controls="traffic"></label></div><table id="traffic" class="compact hover stripe dataTable no-footer" style="min-width: 1024px" role="grid" aria-describedby="traffic_info">
+				<thead>
+					<tr role="row"><td style="width: 10%" class="sorting_asc" tabindex="0" aria-controls="traffic" rowspan="1" colspan="1" aria-label="Nom: activer pour trier la colonne par ordre d&amp;eacute;croissant" aria-sort="ascending">Nom</td><td style="width: 10%" class="sorting" tabindex="0" aria-controls="traffic" rowspan="1" colspan="1" aria-label="Filiale: activer pour trier la colonne par ordre croissant">Filiale</td><td style="width: 10%" class="sorting" tabindex="0" aria-controls="traffic" rowspan="1" colspan="1" aria-label="Rame: activer pour trier la colonne par ordre croissant">Rame</td><td style="width: 7%" class="sorting" tabindex="0" aria-controls="traffic" rowspan="1" colspan="1" aria-label="Heure départ: activer pour trier la colonne par ordre croissant">Heure départ</td><td style="width: 10%" class="sorting" tabindex="0" aria-controls="traffic" rowspan="1" colspan="1" aria-label="Gare départ: activer pour trier la colonne par ordre croissant">Gare départ</td><td style="width: 2%" class="sorting_disabled" rowspan="1" colspan="1" aria-label=""></td><td style="width: 10%" class="sorting" tabindex="0" aria-controls="traffic" rowspan="1" colspan="1" aria-label="Gare arrivée: activer pour trier la colonne par ordre croissant">Gare arrivée</td><td style="width: 7%" class="sorting" tabindex="0" aria-controls="traffic" rowspan="1" colspan="1" aria-label="Heure arrivée: activer pour trier la colonne par ordre croissant">Heure arrivée</td><td style="width: 8%" class="sorting" tabindex="0" aria-controls="traffic" rowspan="1" colspan="1" aria-label="Jours: activer pour trier la colonne par ordre croissant">Jours</td><td style="width: 12%" class="sorting_disabled" rowspan="1" colspan="1" aria-label="Remplissages">Remplissages</td><td style="width: 2%" class="sorting" tabindex="0" aria-controls="traffic" rowspan="1" colspan="1" aria-label="W: activer pour trier la colonne par ordre croissant">W</td><td style="width: 4%" class="sorting" tabindex="0" aria-controls="traffic" rowspan="1" colspan="1" aria-label="EAS: activer pour trier la colonne par ordre croissant">EAS</td><td style="width: 8%" class="sorting_disabled" rowspan="1" colspan="1" aria-label=""></td></tr>
+				</thead>
+				<tbody>
+				<tr role="row" class="odd"><td class="sorting_1">CIT-MPL-NEU<br><span class="servTraf">intercité</span><br><span class="num">(3502434)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">05:40</td><td class="">Montpellier St Roch</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Béziers</td><td class="">06:28</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : 95,07%<br>2nde : 95,00%<p style="opacity: .75; font-size: 12px">405 places de 1ère<br>76 places de 2nde</p></td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502434">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502434" data-id="3502434" data-name="CIT-MPL-NEU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-MPL-NEU<br><span class="servTraf">intercité</span><br><span class="num">(3502435)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">06:33</td><td class="">Béziers</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Bédarieux</td><td class="">07:12</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : 92,02%<br>2nde : 105,00%<p style="opacity: .75; font-size: 12px">392 places de 1ère<br>84 places de 2nde</p></td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502435">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502435" data-id="3502435" data-name="CIT-MPL-NEU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-MPL-NEU<br><span class="servTraf">intercité</span><br><span class="num">(3502436)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">07:17</td><td class="">Bédarieux</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Tournemire-Roquefort</td><td class="">08:09</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : 105,00%<br>2nde : 105,00%<p style="opacity: .75; font-size: 12px">447 places de 1ère<br>84 places de 2nde</p></td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502436">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502436" data-id="3502436" data-name="CIT-MPL-NEU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-MPL-NEU<br><span class="servTraf">intercité</span><br><span class="num">(3502438)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">08:14</td><td class="">Tournemire-Roquefort</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Millau</td><td class="">08:44</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502438">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502438" data-id="3502438" data-name="CIT-MPL-NEU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-MPL-NEU<br><span class="servTraf">intercité</span><br><span class="num">(3502439)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">08:49</td><td class="">Millau</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Sévérac-le-Château</td><td class="">09:20</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502439">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502439" data-id="3502439" data-name="CIT-MPL-NEU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-MPL-NEU<br><span class="servTraf">intercité</span><br><span class="num">(3502440)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">09:25</td><td class="">Sévérac-le-Château</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Le Monastier</td><td class="">10:04</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502440">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502440" data-id="3502440" data-name="CIT-MPL-NEU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-MPL-NEU<br><span class="servTraf">intercité</span><br><span class="num">(3502441)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">10:09</td><td class="">Le Monastier</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Marvejols</td><td class="">10:21</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502441">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502441" data-id="3502441" data-name="CIT-MPL-NEU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-MPL-NEU<br><span class="servTraf">intercité</span><br><span class="num">(3502442)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">10:26</td><td class="">Marvejols</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">St-Chély-d'Apcher</td><td class="">11:03</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502442">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502442" data-id="3502442" data-name="CIT-MPL-NEU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-MPL-NEU<br><span class="servTraf">intercité</span><br><span class="num">(3502444)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">11:08</td><td class="">St-Chély-d'Apcher</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">St Flour-Chaudes-Aigues</td><td class="">11:43</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502444">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502444" data-id="3502444" data-name="CIT-MPL-NEU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-MPL-NEU<br><span class="servTraf">intercité</span><br><span class="num">(3502446)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">11:48</td><td class="">St Flour-Chaudes-Aigues</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Neussargues</td><td class="">12:12</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502446">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502446" data-id="3502446" data-name="CIT-MPL-NEU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-NEU-MPL<br><span class="servTraf">intercité</span><br><span class="num">(3502447)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">13:00</td><td class="">Neussargues</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">St Flour-Chaudes-Aigues</td><td class="">13:24</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502447">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502447" data-id="3502447" data-name="CIT-NEU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-NEU-MPL<br><span class="servTraf">intercité</span><br><span class="num">(3502450)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">13:29</td><td class="">St Flour-Chaudes-Aigues</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">St-Chély-d'Apcher</td><td class="">13:37</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502450">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502450" data-id="3502450" data-name="CIT-NEU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-NEU-MPL<br><span class="servTraf">intercité</span><br><span class="num">(3502451)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">13:42</td><td class="">St-Chély-d'Apcher</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Marvejols</td><td class="">14:19</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502451">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502451" data-id="3502451" data-name="CIT-NEU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-NEU-MPL<br><span class="servTraf">intercité</span><br><span class="num">(3502452)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">14:24</td><td class="">Marvejols</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Le Monastier</td><td class="">14:36</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502452">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502452" data-id="3502452" data-name="CIT-NEU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-NEU-MPL<br><span class="servTraf">intercité</span><br><span class="num">(3502453)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">14:41</td><td class="">Le Monastier</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Sévérac-le-Château</td><td class="">15:20</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502453">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502453" data-id="3502453" data-name="CIT-NEU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-NEU-MPL<br><span class="servTraf">intercité</span><br><span class="num">(3502454)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">15:25</td><td class="">Sévérac-le-Château</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Millau</td><td class="">15:56</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502454">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502454" data-id="3502454" data-name="CIT-NEU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-NEU-MPL<br><span class="servTraf">intercité</span><br><span class="num">(3502455)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">16:01</td><td class="">Millau</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Tournemire-Roquefort</td><td class="">16:26</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502455">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502455" data-id="3502455" data-name="CIT-NEU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-NEU-MPL<br><span class="servTraf">intercité</span><br><span class="num">(3502456)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">16:31</td><td class="">Tournemire-Roquefort</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Bédarieux</td><td class="">17:18</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502456">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502456" data-id="3502456" data-name="CIT-NEU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-NEU-MPL<br><span class="servTraf">intercité</span><br><span class="num">(3502457)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">17:23</td><td class="">Bédarieux</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Béziers</td><td class="">17:57</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502457">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502457" data-id="3502457" data-name="CIT-NEU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-NEU-MPL<br><span class="servTraf">intercité</span><br><span class="num">(3502458)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-426-80-1</td><td class="">18:02</td><td class="">Béziers</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Montpellier St Roch</td><td class="">18:45</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502458">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502458" data-id="3502458" data-name="CIT-NEU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-TLN-TSE<br><span class="servTraf">intercité</span><br><span class="num">(3502135)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">05:54</td><td class="">Toulon</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Marseille St Charles</td><td class="">06:53</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : 98,28%<br>2nde : 0,00%<p style="opacity: .75; font-size: 12px">227 places de 1ère</p></td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502135">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502135" data-id="3502135" data-name="CIT-TLN-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-TLN-TSE<br><span class="servTraf">intercité</span><br><span class="num">(3502136)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">06:58</td><td class="">Marseille St Charles</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Nîmes</td><td class="">08:23</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502136">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502136" data-id="3502136" data-name="CIT-TLN-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-TLN-TSE<br><span class="servTraf">intercité</span><br><span class="num">(3502137)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">08:30</td><td class="">Nîmes</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Montpellier St Roch</td><td class="">09:11</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502137">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502137" data-id="3502137" data-name="CIT-TLN-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-TLN-TSE<br><span class="servTraf">intercité</span><br><span class="num">(3502138)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">09:16</td><td class="">Montpellier St Roch</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Sète</td><td class="">09:35</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502138">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502138" data-id="3502138" data-name="CIT-TLN-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-TLN-TSE<br><span class="servTraf">intercité</span><br><span class="num">(3502139)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">09:40</td><td class="">Sète</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Béziers</td><td class="">10:12</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502139">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502139" data-id="3502139" data-name="CIT-TLN-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-TLN-TSE<br><span class="servTraf">intercité</span><br><span class="num">(3502140)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">10:17</td><td class="">Béziers</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Narbonne</td><td class="">10:39</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502140">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502140" data-id="3502140" data-name="CIT-TLN-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-TLN-TSE<br><span class="servTraf">intercité</span><br><span class="num">(3502141)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">10:44</td><td class="">Narbonne</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Toulouse-Matabiau</td><td class="">11:59</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502141">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502141" data-id="3502141" data-name="CIT-TLN-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-TSE-TLN<br><span class="servTraf">intercité</span><br><span class="num">(3502142)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">12:30</td><td class="">Toulouse-Matabiau</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Narbonne</td><td class="">13:50</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502142">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502142" data-id="3502142" data-name="CIT-TSE-TLN" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-TSE-TLN<br><span class="servTraf">intercité</span><br><span class="num">(3502143)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">13:55</td><td class="">Narbonne</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Béziers</td><td class="">14:17</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502143">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502143" data-id="3502143" data-name="CIT-TSE-TLN" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-TSE-TLN<br><span class="servTraf">intercité</span><br><span class="num">(3502144)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">14:22</td><td class="">Béziers</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Sète</td><td class="">14:49</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502144">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502144" data-id="3502144" data-name="CIT-TSE-TLN" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-TSE-TLN<br><span class="servTraf">intercité</span><br><span class="num">(3502145)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">14:54</td><td class="">Sète</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Montpellier St Roch</td><td class="">15:18</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502145">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502145" data-id="3502145" data-name="CIT-TSE-TLN" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-TSE-TLN<br><span class="servTraf">intercité</span><br><span class="num">(3502146)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">15:23</td><td class="">Montpellier St Roch</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Nîmes</td><td class="">15:59</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502146">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502146" data-id="3502146" data-name="CIT-TSE-TLN" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-TSE-TLN<br><span class="servTraf">intercité</span><br><span class="num">(3502147)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">16:04</td><td class="">Nîmes</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Avignon-Centre</td><td class="">16:41</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502147">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502147" data-id="3502147" data-name="CIT-TSE-TLN" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">CIT-TSE-TLN<br><span class="servTraf">intercité</span><br><span class="num">(3502148)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">16:46</td><td class="">Avignon-Centre</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Marseille St Charles</td><td class="">18:01</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : -%<br>2nde : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502148">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502148" data-id="3502148" data-name="CIT-TSE-TLN" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">CIT-TSE-TLN<br><span class="servTraf">intercité</span><br><span class="num">(3502149)</span></td><td class="">SUD Rail Voyage</td><td class="">CIT-V160-232-0-1</td><td class="">18:06</td><td class="">Marseille St Charles</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Toulon</td><td class="">19:00</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>1ère : 97,41%<br>2nde : 0,00%<p style="opacity: .75; font-size: 12px">225 places de 1ère</p></td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502149">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502149" data-id="3502149" data-name="CIT-TSE-TLN" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">FRD-MAU-MPL<br><span class="servTraf"></span><br><span class="num">(3502680)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA80-331T-1</td><td class="">13:34</td><td class="">Millau</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Béziers</td><td class="">15:22</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 100,00%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502680">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502680" data-id="3502680" data-name="FRD-MAU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">FRD-MAU-MPL<br><span class="servTraf"></span><br><span class="num">(3502681)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA80-331T-1</td><td class="">15:27</td><td class="">Béziers</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Montpellier St Roch</td><td class="">16:44</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : -%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502681">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502681" data-id="3502681" data-name="FRD-MAU-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">FRD-MPL-TSE<br><span class="servTraf"></span><br><span class="num">(3501759)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA100-353T-1</td><td class="">06:00</td><td class="">Montpellier St Roch</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Toulouse-Matabiau</td><td class="">09:29</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 100,00%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3501759">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3501759" data-id="3501759" data-name="FRD-MPL-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">FRD-MPL-TSE<br><span class="servTraf"></span><br><span class="num">(3501761)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA100-353T-1</td><td class="">12:50</td><td class="">Montpellier St Roch</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Toulouse-Matabiau</td><td class="">16:09</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 100,00%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3501761">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3501761" data-id="3501761" data-name="FRD-MPL-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">FRD-TSE-MPL<br><span class="servTraf"></span><br><span class="num">(3501760)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA100-353T-1</td><td class="">09:30</td><td class="">Toulouse-Matabiau</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Montpellier St Roch</td><td class="">12:49</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 100,00%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3501760">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3501760" data-id="3501760" data-name="FRD-TSE-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">FRD-TSE-MPL<br><span class="servTraf"></span><br><span class="num">(3501762)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA100-353T-1</td><td class="">16:10</td><td class="">Toulouse-Matabiau</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Montpellier St Roch</td><td class="">19:29</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 100,00%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3501762">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3501762" data-id="3501762" data-name="FRD-TSE-MPL" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">FRE-MPL-TSE<br><span class="servTraf"></span><br><span class="num">(3501763)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA80-331T-1</td><td class="">02:45</td><td class="">Montpellier St Roch</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Sète</td><td class="">03:15</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 92,15%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3501763">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3501763" data-id="3501763" data-name="FRE-MPL-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">FRE-MPL-TSE<br><span class="servTraf"></span><br><span class="num">(3501764)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA80-331T-1</td><td class="">03:40</td><td class="">Sète</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Béziers</td><td class="">04:30</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 100,00%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3501764">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3501764" data-id="3501764" data-name="FRE-MPL-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">FRE-MPL-TSE<br><span class="servTraf"></span><br><span class="num">(3501765)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA80-331T-1</td><td class="">04:50</td><td class="">Béziers</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Narbonne</td><td class="">05:20</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 96,07%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3501765">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3501765" data-id="3501765" data-name="FRE-MPL-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">FRE-MPL-TSE<br><span class="servTraf"></span><br><span class="num">(3501766)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA80-331T-1</td><td class="">05:40</td><td class="">Narbonne</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Toulouse-Matabiau</td><td class="">08:00</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 100,00%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3501766">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3501766" data-id="3501766" data-name="FRE-MPL-TSE" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">FRE-TSE-MAU<br><span class="servTraf"></span><br><span class="num">(3502668)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA80-331T-1</td><td class="">08:10</td><td class="">Toulouse-Matabiau</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Narbonne</td><td class="">10:31</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 94,26%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502668">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502668" data-id="3502668" data-name="FRE-TSE-MAU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">FRE-TSE-MAU<br><span class="servTraf"></span><br><span class="num">(3502671)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA80-331T-1</td><td class="">10:36</td><td class="">Narbonne</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Béziers</td><td class="">11:02</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 100,00%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502671">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502671" data-id="3502671" data-name="FRE-TSE-MAU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">FRE-TSE-MAU<br><span class="servTraf"></span><br><span class="num">(3502673)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA80-331T-1</td><td class="">11:07</td><td class="">Béziers</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Bédarieux</td><td class="">11:52</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 100,00%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502673">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502673" data-id="3502673" data-name="FRE-TSE-MAU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="odd"><td class="sorting_1">FRE-TSE-MAU<br><span class="servTraf"></span><br><span class="num">(3502675)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA80-331T-1</td><td class="">11:57</td><td class="">Bédarieux</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Tournemire-Roquefort</td><td class="">12:49</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 100,00%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502675">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502675" data-id="3502675" data-name="FRE-TSE-MAU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr><tr role="row" class="even"><td class="sorting_1">FRE-TSE-MAU<br><span class="servTraf"></span><br><span class="num">(3502678)</span></td><td class="">SUD Rail Fret</td><td class="">FRE-MA80-331T-1</td><td class="">12:59</td><td class="">Tournemire-Roquefort</td><td><strong style="font-size: 20px; color: #1e88e5">⇨</strong></td><td class="">Millau</td><td class="">13:29</td><td><span style="font-size: 13px">lu/ma/me/je/ve/sa/di</span></td><td>Fret : 93,05%</td><td></td><td></td><td><form action="edittrain.php" method="post" class="edit">
+				<input type="hidden" name="Num" value="3502678">
+				<input type="submit" style="width: 100%; padding : 5px 0; text-align: center; margin-top: 0" value="Modifier">
+			</form>
+			<button class="deleteTrain submit" data-link="supprtrain.php?id=3502678" data-id="3502678" data-name="FRE-TSE-MAU" style="width: 100%; padding : 5px 0; text-align: center">Supprimer</button></td></tr></tbody>
+			</table><div class="dataTables_info" id="traffic_info" role="status" aria-live="polite">Affichage de l'élément 1 à 50 sur 50 éléments</div><div class="dataTables_paginate paging_simple_numbers" id="traffic_paginate"><a class="paginate_button previous disabled" aria-controls="traffic" data-dt-idx="0" tabindex="0" id="traffic_previous">Précédent</a><span><a class="paginate_button current" aria-controls="traffic" data-dt-idx="1" tabindex="0">1</a></span><a class="paginate_button next disabled" aria-controls="traffic" data-dt-idx="2" tabindex="0" id="traffic_next">Suivant</a></div></div>
+		</fieldset>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script type="application/javascript">
+			$(document).ready(function(){
+				$('#traffic').DataTable({
+					"oLanguage": {
+						"sUrl": "//cdn.datatables.net/plug-ins/1.10.7/i18n/French.json"
+					},
+					"ajax": {
+						"url": "./getTraffic.php",
+						"dataSrc": ""
+					},
+					"columnDefs": [
+						{
+							"orderable": false,
+							"targets": 5
+						},
+						{
+							"orderable": false,
+							"targets": 9
+						},
+						{
+							"orderable": false,
+							"targets": 12
+						}
+					],
+					"order": [[ 3, "asc" ]],
+					"autoWidth": false,
+					"pageLength": 1000,
+					"aLengthMenu": [[10, 20, 50, 100, 200, 500, 1000, -1], [10, 20, 50, 100, 200, 500, 1000, "Tout"]]
+				});
+
+				$(document).on('click', '.deleteTrain', function() {
+					var id = $(this).data('id'),
+						name = $(this).data('name'),
+						link = $(this).data('link'),
+						r = confirm("Êtes-vous sûr de vouloir supprimer le trajet '" + name + " (n°" + id + "') ?");
+
+					if (r == true) {
+						var td = $(this).parent('td');
+						td.html('Chargement ...');
+						$.ajax({
+							url: link,
+							context: document.body
+						}).done(function(result){
+							var data = result,
+								className = 'bonus';
+
+							if (result == '0') {
+								data = 'Erreur lors de la suppression, essayez de recharger la page.',
+								className = 'malus';
+							}
+
+							td.html('<span class="' + className + '">' + data + '</span>');
+						});
+					}
+				});
+
+				$('#exit-import-modal').click(function() {
+					$('#import-modal').css('display', 'none');
+				})
+
+				$('#open-import-modal').click(function() {
+					$('#import-modal').css('display', 'block');
+				})
+			});
+		</script>
+			<br>
+		<br>
+		<br>
+		<footer>
+						© Train Empire 2016 - 2025 – <em>v1.10.9</em>
+		</footer>
+		<script type="application/javascript">
+			$('#show-modal-employee').click(function(){
+				$('#modal-employee').css('display', 'block');
+			});
+
+			$('.dissmiss-modal').click(function(){
+				$('.modal').css('display', 'none');
+			});
+
+			$('#menu li').mouseenter(function(){
+				var parentLi = $(this).parent().closest('li');
+
+				if (parentLi.length > 0) {
+					$('#menu li').css('background-color', '#3a96e8');
+					parentLi.css('background-color', '#1976d2');
+				}
+			});
+
+			$('#menu li ul li').mouseleave(function(){
+				$('#menu li').css('background-color', '#3a96e8');
+			});
+		</script>
+	
+
+</body></html>
